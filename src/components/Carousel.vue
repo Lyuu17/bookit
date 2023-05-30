@@ -1,6 +1,6 @@
 <template>
-  <section class="marcas">
-    <div class="swiper-container marca-slider">
+  <section class="brands">
+    <div class="swiper-container brand-slider">
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="../imgs/1.png" alt="" /></div>
         <div class="swiper-slide"><img src="../imgs/2.jpg" alt="" /></div>
