@@ -4,7 +4,7 @@
       v-model="searchText"
       @input="search"
       type="text"
-      placeholder="Buscar provincia"
+      placeholder="Destination Name"
     />
     <ul v-if="showSuggestions">
       <li

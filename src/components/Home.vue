@@ -19,8 +19,8 @@
           class="formulario content absolute bottom-1/4 text-2xl bg-backgroundForm p-5 z-100"
         >
           <h2></h2>
+          <AutocompleteInput />
           <form action="" class="form-horizontal flex space-x-5">
-            <input type="text" class="form-control" placeholder="Destination name" />
             <input type="date" class="form-control" placeholder="Date" />
             <input type="number" class="form-control" placeholder="Price (€)" />
             <input type="submit" class="btn" value="Search" />
@@ -31,6 +31,8 @@
   </section>
 </template>
 
-<script setup lang="ts" type="module"></script>
+<script setup lang="ts" type="module">
+import AutocompleteInput from "./AutocompleteInput.vue";
+</script>
 
 <style scoped></style>
