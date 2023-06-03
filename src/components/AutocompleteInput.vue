@@ -1,20 +1,27 @@
 <template>
-  <div>
-    <input
-      v-model="searchText"
-      @input="search"
-      type="text"
-      placeholder="Destination Name"
-    />
-    <ul v-if="showSuggestions">
-      <li
-        v-for="suggestion in suggestions"
-        :key="suggestion"
-        @click="selectSuggestion(suggestion)"
+  <div class="relative">
+    <div class="autocomplete-container">
+      <input
+        v-model="searchText"
+        @input="search"
+        type="text"
+        class="outline-none bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2 autocomplete-input"
+        placeholder="Destination Name"
+      />
+      <ul
+        v-if="showSuggestions && suggestions.length"
+        class="absolute left-0 top-full mt-2 w-full bg-white border border-gray-300 rounded-md p-2 autocomplete-list"
       >
-        {{ suggestion }}
-      </li>
-    </ul>
+        <li
+          v-for="suggestion in suggestions"
+          :key="suggestion"
+          @click="selectSuggestion(suggestion)"
+          class="cursor-pointer"
+        >
+          {{ suggestion }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -84,7 +91,8 @@ export default {
       this.suggestions = this.provinces.filter((province) =>
         province.toLowerCase().includes(this.searchText.toLowerCase())
       );
-      this.showSuggestions = true;
+
+      this.showSuggestions = this.searchText === "" ? false : true;
     },
     selectSuggestion(suggestion) {
       this.searchText = suggestion;
@@ -93,3 +101,25 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.autocomplete-container {
+  position: relative;
+}
+
+.autocomplete-input {
+  outline: none;
+}
+
+.autocomplete-list {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+</style>

@@ -16,18 +16,28 @@
         <p class="text-white text-4xl py-2">the essence of true discovery</p>
 
         <div
-          class="formulario content absolute bottom-1/4 text-2xl bg-backgroundForm p-5 z-100"
+          class="absolute formulario content bottom-1/4 text-2xl bg-backgroundForm p-10 z-100 rounded-md"
         >
-          <h2></h2>
-          <AutocompleteInput />
           <form action="" class="form-horizontal flex space-x-5">
-            <input type="date" class="form-control" placeholder="Date" />
-            <input type="number" class="form-control" placeholder="Price (€)" />
+            <div class="relative">
+              <AutocompleteInput />
+            </div>
+            <input
+              type="date"
+              class="form-control bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2"
+              placeholder="Date"
+            />
+            <input
+              type="number"
+              class="form-control bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2"
+              placeholder="Price (€)"
+            />
             <input type="submit" class="btn" value="Search" />
           </form>
         </div>
       </div>
     </div>
+    b
   </section>
 </template>
 
