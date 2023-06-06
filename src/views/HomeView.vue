@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Card from "../components/Card.vue";
+import Home from "../components/Home.vue";
 </script>
 
 <template>
   <main>
-    <Card />
+    <Home />
   </main>
 </template>

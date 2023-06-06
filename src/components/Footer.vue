@@ -20,9 +20,6 @@
         </h2>
         <ul class="text-gray-500 dark:text-gray-400 font-medium">
           <li class="mb-4">
-            <a href="#" class="hover:underline">Discord Server</a>
-          </li>
-          <li class="mb-4">
             <a href="#" class="hover:underline">Twitter</a>
           </li>
           <li class="mb-4">

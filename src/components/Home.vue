@@ -4,7 +4,7 @@
       <!-- Video por defecto -->
       <div class="absolute top-0 left-0 z-1 h-full w-full">
         <img
-          src="../imgs/header-bg.jpg"
+          src="../assets/imgs/header-bg.jpg"
           class="absolute top-0 left-0 h-full w-full object-cover"
         />
       </div>
@@ -25,14 +25,14 @@
             <input
               type="date"
               class="form-control bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2"
-              placeholder="Date"
+              placeholder="Check-in"
             />
             <input
-              type="number"
+              type="date"
               class="form-control bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2"
-              placeholder="Price (€)"
+              placeholder="Check-out"
             />
-            <input type="submit" class="btn" value="Search" />
+            <input type="submit" class="btn cursor-pointer" value="Search" />
           </form>
         </div>
       </div>
