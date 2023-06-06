@@ -1,7 +1,6 @@
 <template>
   <section class="font-nunito relative">
     <div class="min-h-screen flex items-center justify-center relative">
-      <!-- Video por defecto -->
       <div class="absolute top-0 left-0 z-1 h-full w-full">
         <img
           src="../assets/imgs/header-bg.jpg"
@@ -24,15 +23,22 @@
             </div>
             <input
               type="date"
+              v-model="checkin"
               class="form-control bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2"
               placeholder="Check-in"
             />
             <input
               type="date"
+              v-model="checkout"
               class="form-control bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2"
               placeholder="Check-out"
             />
-            <input type="submit" class="btn cursor-pointer" value="Search" />
+            <input
+              type="submit"
+              class="btn cursor-pointer"
+              value="Search"
+              @click="search_hotels"
+            />
           </form>
         </div>
       </div>
@@ -40,8 +46,37 @@
   </section>
 </template>
 
-<script setup lang="ts" type="module">
+<script>
 import AutocompleteInput from "./AutocompleteInput.vue";
+import { ref } from "vue";
+import axios from "axios";
+
+export default {
+  components: {
+    AutocompleteInput,
+  },
+  setup() {
+    const checkin = ref("");
+    const checkout = ref("");
+
+    const updateCheckin = (event) => {
+      const date = new Date(event.target.value);
+      checkin.value = date.toISOString();
+    };
+
+    const updateCheckout = (event) => {
+      const date = new Date(event.target.value);
+      checkout.value = date.toISOString();
+    };
+
+    return {
+      checkin,
+      checkout,
+      updateCheckin,
+      updateCheckout,
+    };
+  },
+};
 </script>
 
 <style scoped></style>
