@@ -58,22 +58,38 @@ export default {
   setup() {
     const checkin = ref("");
     const checkout = ref("");
+    const response = ref();
 
-    const updateCheckin = (event) => {
+    const CheckinISO = (event) => {
       const date = new Date(event.target.value);
       checkin.value = date.toISOString();
     };
 
-    const updateCheckout = (event) => {
+    const CheckoutISO = (event) => {
       const date = new Date(event.target.value);
       checkout.value = date.toISOString();
+    };
+
+    const search_hotels = () => {
+      axios
+        .get(
+          `http://localhost:3005/api/properties/availability?checkin=${CheckinISO}&checkout=${CheckoutISO}`
+        )
+        .then((response) => {
+          response.value = response.data;
+          console.log(response.value);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     };
 
     return {
       checkin,
       checkout,
-      updateCheckin,
-      updateCheckout,
+      CheckinISO,
+      CheckoutISO,
+      search_hotels,
     };
   },
 };
