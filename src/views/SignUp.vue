@@ -20,16 +20,17 @@
         />
 
         <input
+          type="text"
+          class="block border border-grey-light w-full p-3 rounded mb-4"
+          name="birthdate"
+          placeholder="Birthdate (YYYY-mm-dd)"
+        />
+
+        <input
           type="password"
           class="block border border-grey-light w-full p-3 rounded mb-4"
           name="password"
           placeholder="Password"
-        />
-        <input
-          type="password"
-          class="block border border-grey-light w-full p-3 rounded mb-4"
-          name="confirm_password"
-          placeholder="Confirm Password"
         />
 
         <button
@@ -56,4 +57,4 @@
 
 <script setup></script>
 
-<style lang="scss" scoped></style>
+<style></style>
