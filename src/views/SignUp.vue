@@ -8,8 +8,15 @@
         <input
           type="text"
           class="block border border-grey-light w-full p-3 rounded mb-4"
-          name="fullname"
-          placeholder="Full Name"
+          name="firstName"
+          placeholder="First Name"
+        />
+
+        <input
+          type="text"
+          class="block border border-grey-light w-full p-3 rounded mb-4"
+          name="lastName"
+          placeholder="Last Name"
         />
 
         <input
@@ -39,17 +46,6 @@
         >
           Create Account
         </button>
-
-        <div class="text-center text-sm text-grey-dark mt-4">
-          By signing up, you agree to the
-          <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
-            Terms of Service
-          </a>
-          and
-          <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
-            Privacy Policy
-          </a>
-        </div>
       </div>
     </div>
   </div>
