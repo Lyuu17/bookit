@@ -24,84 +24,45 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, watch } from "vue";
 
 export default {
   setup() {
     const searchText = ref("");
-    const provinces = reactive([
-      "Álava",
-      "Albacete",
-      "Alicante",
-      "Almería",
-      "Asturias",
-      "Ávila",
-      "Badajoz",
-      "Barcelona",
-      "Burgos",
-      "Cáceres",
-      "Cádiz",
-      "Cantabria",
-      "Castellón",
-      "Ciudad Real",
-      "Córdoba",
-      "Cuenca",
-      "Gerona",
-      "Granada",
-      "Guadalajara",
-      "Guipúzcoa",
-      "Huelva",
-      "Huesca",
-      "Islas Baleares",
-      "Jaén",
-      "La Coruña",
-      "La Rioja",
-      "Las Palmas",
-      "León",
-      "Lérida",
-      "Lugo",
-      "Madrid",
-      "Málaga",
-      "Murcia",
-      "Navarra",
-      "Orense",
-      "Palencia",
-      "Pontevedra",
-      "Salamanca",
-      "Santa Cruz de Tenerife",
-      "Segovia",
-      "Sevilla",
-      "Soria",
-      "Tarragona",
-      "Teruel",
-      "Toledo",
-      "Valencia",
-      "Valladolid",
-      "Vizcaya",
-      "Zamora",
-      "Zaragoza",
-    ]);
     const showSuggestions = ref(false);
+    const suggestions = ref([]);
 
-    const suggestions = computed(() => {
-      return provinces.filter((province) =>
-        province.toLowerCase().includes(searchText.value.toLowerCase())
-      );
-    });
+    const search = async () => {
+      if (searchText === "") {
+        showSuggestions = false;
+        suggestions.value = [];
+        return;
+      }
 
-    const search = () => {
-      showSuggestions.value = searchText.value === "" ? false : true;
+      try {
+        const response = await axios.get(
+          `http://localhost:3005/api/v1/geocode/${searchText.value}`
+        );
+        suggestions.value = response.data;
+        showSuggestions = true;
+      } catch (e) {
+        console.log(e);
+      }
     };
 
     const selectSuggestion = (suggestion) => {
-      searchText.value = suggestion;
+      searchText.value = suggestion.formattedAddress;
       showSuggestions.value = false;
     };
 
+    watch(searchText, () => {
+      search();
+    });
+
     return {
       searchText,
-      suggestions,
       showSuggestions,
+      suggestions,
       search,
       selectSuggestion,
     };

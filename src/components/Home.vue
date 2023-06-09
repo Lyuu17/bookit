@@ -19,7 +19,7 @@
         >
           <form action="" class="form-horizontal flex space-x-5">
             <div class="relative">
-              <AutocompleteInput />
+              <AutocompleteInput v-model="city" />
             </div>
             <input
               type="date"
@@ -56,6 +56,7 @@ export default {
     AutocompleteInput,
   },
   setup() {
+    const city = ref("");
     const checkin = ref("");
     const checkout = ref("");
     const response = ref();
@@ -72,9 +73,10 @@ export default {
 
     const search_hotels = () => {
       axios
-        .get(
-          `http://localhost:3005/api/properties/availability?checkin=${CheckinISO}&checkout=${CheckoutISO}`
-        )
+        .get(`http://localhost:3005/api/v1/properties/city/${city.value}`)
+        /*.get(
+          `http://localhost:3005/api/v1/properties/availability?checkin=${CheckinISO.value}&checkout=${CheckoutISO.value}`
+        )*/
         .then((response) => {
           response.value = response.data;
           console.log(response.value);
