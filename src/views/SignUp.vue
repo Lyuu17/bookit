@@ -29,11 +29,13 @@
                 type="text"
                 placeholder="Firstname"
                 class="border-gray-400 py-1 px-2 border-none"
+                v-model="first_name"
               />
               <input
                 type="text"
                 placeholder="Lastname"
                 class="border-gray-400 py-1 px-2 border-none"
+                v-model="last_name"
               />
             </div>
             <div class="mt-5">
@@ -41,6 +43,7 @@
                 type="text"
                 placeholder="Birthdate (YYYY-mm-dd)"
                 class="border-gray-400 py-1 px-2 w-full border-none"
+                v-model="birthdate"
               />
             </div>
             <div class="mt-5">
@@ -48,6 +51,7 @@
                 type="text"
                 placeholder="Email"
                 class="border border-gray-400 py-1 px-2 w-full border-none"
+                v-model="email_address"
               />
             </div>
             <div class="mt-5">
@@ -55,6 +59,7 @@
                 type="password"
                 placeholder="Password"
                 class="border-gray-400 py-1 px-2 w-full border-none"
+                v-model="password"
               />
             </div>
             <div class="mt-5">
@@ -62,6 +67,7 @@
                 type="submit"
                 class="w-full bg-green-300 py-3 text-center text-white cursor-pointer"
                 value="Register Now"
+                @click="register"
               />
             </div>
             <div class="mt-3 text-center">
@@ -79,6 +85,30 @@
   </div>
 </template>
 
-<script setup></script>
+<script>
+import { ref } from "vue";
+import axios from "axios";
+
+export default {
+  setup() {
+    // Variables reactivas con ref
+    const first_name = ref("");
+    const last_name = ref("");
+    const birthdate = ref("");
+    const email_address = ref("");
+    const password = ref("");
+
+    // Otros métodos y opciones del componente aquí
+
+    return {
+      first_name,
+      last_name,
+      birthdate,
+      email_address,
+      password,
+    };
+  },
+};
+</script>
 
 <style></style>
