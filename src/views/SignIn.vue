@@ -16,7 +16,7 @@
             <p class="text-white">
               Ready for another new adventure? With BookIt it's possible. Log in to see
               the new offers we have for you!
-              <a href="#" class="text-purple-500 font-semibold">Learn more</a>
+              <a href="#" class="text-green-300 font-semibold">Learn more</a>
             </p>
           </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="mt-5">
               <input
                 type="submit"
-                class="w-full bg-purple-500 py-3 text-center text-white cursor-pointer"
+                class="w-full bg-green-300 py-3 text-center text-white cursor-pointer"
                 value="Sign In"
               />
             </div>
@@ -49,7 +49,7 @@
           <div class="mt-3 text-center">
             <p>
               Don’t have an account yet?
-              <router-link to="/" class="text-purple-500 font-semibold"
+              <router-link to="/" class="text-green-300 font-semibold"
                 >SignUp</router-link
               >
             </p>
