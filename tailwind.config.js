@@ -4,8 +4,6 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,vue}",],
   theme: {
     colors: {
-      backgroundBookIt: '#222028',
-      backgroundForm: '#00000080',
       fontColor: '#a5afac',
       secondfontColor: '#a5747e'
     },

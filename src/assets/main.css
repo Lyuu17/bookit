@@ -12,13 +12,6 @@
 /* Para todo el documento, le quitamos todas las decoraciones por defecto y cambiamos la fuente a 'Nunito' */
 *{
     font-family:'Nunito';
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-transform: capitalize;
-    outline: none;
-    border: none;
-    text-decoration: none;
     transition: all .2s linear;
 }
 
@@ -31,7 +24,7 @@
 /* Para todo el documento html, le ponemos un estilo de fuente, scroll suave, y un overflow:hidden para */
 /* que todo lo que sobrepase de la página se esconda  */
 html{
-    font-size: 62.5%;
+    font-size: 85.5%;
     overflow-x: hidden;
     scroll-padding-top: 6rem;
     scroll-behavior: smooth;
