@@ -16,7 +16,6 @@
             <p class="text-white font-medium">
               Explore new horizons, immerse yourself in fascinating cultures, and create
               stories to tell. Sign up and embark on your journey into the unknown.
-              <a href="#" class="text-green-300 font-semibold">Learn more</a>
             </p>
           </div>
         </div>
@@ -28,13 +27,13 @@
               <input
                 type="text"
                 placeholder="Firstname"
-                class="border-gray-400 py-1 px-2 border-none"
+                class="bg-slate-100 py-1 px-2 border-none"
                 v-model="first_name"
               />
               <input
                 type="text"
                 placeholder="Lastname"
-                class="border-gray-400 py-1 px-2 border-none"
+                class="bg-slate-100 py-1 px-2 border-none"
                 v-model="last_name"
               />
             </div>
@@ -42,7 +41,7 @@
               <input
                 type="text"
                 placeholder="Birthdate (YYYY-mm-dd)"
-                class="border-gray-400 py-1 px-2 w-full border-none"
+                class="bg-slate-100 py-1 px-2 w-full border-none"
                 v-model="birthdate"
               />
             </div>
@@ -50,7 +49,7 @@
               <input
                 type="text"
                 placeholder="Email"
-                class="border border-gray-400 py-1 px-2 w-full border-none"
+                class="bg-slate-100 py-1 px-2 w-full border-none"
                 v-model="email_address"
               />
             </div>
@@ -58,7 +57,7 @@
               <input
                 type="password"
                 placeholder="Password"
-                class="border-gray-400 py-1 px-2 w-full border-none"
+                class="bg-slate-100 py-1 px-2 w-full border-none"
                 v-model="password"
               />
             </div>
@@ -98,8 +97,6 @@ export default {
     const email_address = ref("");
     const password = ref("");
 
-    // Otros métodos y opciones del componente aquí
-
     return {
       first_name,
       last_name,
@@ -107,6 +104,28 @@ export default {
       email_address,
       password,
     };
+  },
+  methods: {
+    async register() {
+      const data = {
+        email: this.email_address.value,
+        password: this.password.value,
+        firstName: this.first_name.value,
+        lastName: this.last_name.value,
+        birthdate: this.birthdate.value,
+        roles: ["Admin", "User"],
+      };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:3005/api/v1/auth/register",
+          data
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 };
 </script>

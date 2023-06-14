@@ -27,7 +27,7 @@
               <input
                 type="text"
                 placeholder="Email"
-                class="border border-gray-400 py-1 px-2 w-full border-none"
+                class="bg-slate-100 py-1 px-2 w-full border-none"
                 v-model="email_address"
               />
             </div>
@@ -35,7 +35,7 @@
               <input
                 type="password"
                 placeholder="Password"
-                class="border border-gray-400 py-1 px-2 w-full border-none"
+                class="bg-slate-100 py-1 px-2 w-full border-none"
                 v-model="password"
               />
             </div>
@@ -62,7 +62,7 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { ref } from "vue";
 
 export default {
@@ -81,4 +81,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
