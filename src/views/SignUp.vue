@@ -39,7 +39,7 @@
             </div>
             <div class="mt-5">
               <input
-                type="text"
+                type="date"
                 placeholder="Birthdate (YYYY-mm-dd)"
                 class="bg-slate-100 py-1 px-2 w-full border-none"
                 v-model="birthdate"
@@ -62,8 +62,8 @@
               />
             </div>
             <div class="mt-5">
-              <input
-                type="submit"
+              <button
+                type="button"
                 class="w-full bg-green-300 py-3 text-center text-white cursor-pointer"
                 value="Register Now"
                 @click="register"
@@ -72,8 +72,8 @@
             <div class="mt-3 text-center">
               <p>
                 Already have an account?
-                <router-link to="/signin" class="text-green-300 font-semibold"
-                  >Log in</router-link
+                <RouterLink to="/signin" class="text-green-300 font-semibold"
+                  >Log in</RouterLink
                 >
               </p>
             </div>
@@ -84,46 +84,29 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { ref } from "vue";
 import axios from "axios";
 
-export default {
-  setup() {
-    // Variables reactivas con ref
-    const first_name = ref("");
-    const last_name = ref("");
-    const birthdate = ref("");
-    const email_address = ref("");
-    const password = ref("");
+const first_name = ref("");
+const last_name = ref("");
+const birthdate = ref("");
+const email_address = ref("");
+const password = ref("");
 
-    const data = {
+const register = async () => {
+  try {
+    const response = await axios.post("/api/v1/auth/register", {
       email: email_address.value,
       password: password.value,
       firstName: first_name.value,
       lastName: last_name.value,
-      birthdate: birthdate.value,
-      roles: ["Admin", "User"],
-    };
-
-    return {
-      first_name,
-      last_name,
-      birthdate,
-      email_address,
-      password,
-      register,
-    };
-
-    async function register(data) {
-      try {
-        const response = await axios.post("/api/v1/auth/register", data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  },
+      birthdate: new Date(birthdate.value).toISOString().split("T")[0],
+    });
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
 };
 </script>
 
