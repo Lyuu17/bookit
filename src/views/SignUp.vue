@@ -97,35 +97,32 @@ export default {
     const email_address = ref("");
     const password = ref("");
 
+    const data = {
+      email: email_address.value,
+      password: password.value,
+      firstName: first_name.value,
+      lastName: last_name.value,
+      birthdate: birthdate.value,
+      roles: ["Admin", "User"],
+    };
+
     return {
       first_name,
       last_name,
       birthdate,
       email_address,
       password,
+      register,
     };
-  },
-  methods: {
-    async register() {
-      const data = {
-        email: this.email_address.value,
-        password: this.password.value,
-        firstName: this.first_name.value,
-        lastName: this.last_name.value,
-        birthdate: this.birthdate.value,
-        roles: ["Admin", "User"],
-      };
 
+    async function register(data) {
       try {
-        const response = await axios.post(
-          "http://localhost:3005/api/v1/auth/register",
-          data
-        );
+        const response = await axios.post("/api/v1/auth/register", data);
         console.log(response.data);
       } catch (error) {
         console.error(error);
       }
-    },
+    }
   },
 };
 </script>

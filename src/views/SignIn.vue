@@ -77,6 +77,23 @@ export default {
       email_address,
       password,
     };
+
+    async function login() {
+      const data = {
+        email: this.email_address.value,
+        password: this.password.value,
+      };
+
+      try {
+        const response = await axios.post(
+          "http://localhost:3005/api/v1/auth/login",
+          data
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   },
 };
 </script>
