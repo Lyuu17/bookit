@@ -41,7 +41,7 @@
             </div>
             <div class="mt-5">
               <input
-                type="submit"
+                type="button"
                 class="w-full bg-green-300 py-3 text-center text-white cursor-pointer"
                 value="Sign In"
                 @click="login"
@@ -51,9 +51,7 @@
           <div class="mt-3 text-center">
             <p>
               Don’t have an account yet?
-              <router-link to="/" class="text-green-300 font-semibold"
-                >SignUp</router-link
-              >
+              <RouterLink to="/" class="text-green-300 font-semibold">SignUp</RouterLink>
             </p>
           </div>
         </div>
@@ -62,39 +60,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { ref } from "vue";
+import axios from "axios";
 
-export default {
-  setup() {
-    // Variables reactivas con ref
-    const email_address = ref("");
-    const password = ref("");
+const email_address = ref("");
+const password = ref("");
 
-    // Otros métodos y opciones del componente aquí
+const login = async () => {
+  const data = {
+    email: email_address.value,
+    password: password.value,
+  };
 
-    return {
-      email_address,
-      password,
-    };
-
-    async function login() {
-      const data = {
-        email: this.email_address.value,
-        password: this.password.value,
-      };
-
-      try {
-        const response = await axios.post(
-          "http://localhost:3005/api/v1/auth/login",
-          data
-        );
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+  try {
+    const response = await axios.post("/api/v1/auth/login", data);
+    console.log(response.data);
+  } catch (e) {
+    if (e.response.status == 401) {
+      alert(e.response.data.message);
     }
-  },
+  }
 };
 </script>
 
