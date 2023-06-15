@@ -109,8 +109,10 @@ const register = async () => {
     alert("Usuario creado con éxito");
     router.push({ name: "home" });
     console.log(response.data);
-  } catch (error) {
-    console.error(error);
+  } catch (e) {
+    if (e.response.status === 401) {
+      alert(e.response.data.message);
+    }
   }
 };
 </script>

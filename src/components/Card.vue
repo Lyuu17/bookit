@@ -1,15 +1,13 @@
 <template>
   <div
-    class="w-full inline-block max-w-sm bg-white border border-gray-200 m-5 rounded-lg shadow-xl dark:bg-gray-800 dark:border-gray-700"
+    class="w-full inline-block max-w-sm bg-white border border-gray-200 m-5 rounded-lg shadow-xl"
   >
     <a href="#">
       <img class="p-8 rounded-t-lg" src="" alt="image_hotel" />
     </a>
     <div class="px-5 pb-5">
       <a href="#">
-        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-          Hotel Name
-        </h5>
+        <h5 class="text-xl font-semibold tracking-tight text-gray-900">Hotel Name</h5>
       </a>
       <div class="flex items-center mt-2.5 mb-5">
         <svg
@@ -77,10 +75,10 @@
         >
       </div>
       <div class="flex items-center justify-between">
-        <span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+        <span class="text-3xl font-bold text-gray-900">$599</span>
         <a
           href="#"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-white focus:ring-4 bg-green-500 py-3 focus:outline-none font-medium rounded-lg text-base px-5 text-center"
           >Book</a
         >
       </div>

@@ -1,11 +1,11 @@
 <template>
   <div class="relative">
     <input
-      v-model="searchText"
+      v-model="city_name"
       @input="search"
       type="text"
       class="outline-none bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2 autocomplete-input"
-      placeholder="Destination Name"
+      placeholder="City Name"
     />
     <ul
       v-if="showSuggestions && suggestions.length"
@@ -23,44 +23,43 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, reactive, computed, watch } from "vue";
+import axios from "axios";
 
 export default {
   setup() {
-    const searchText = ref("");
+    const city_name = ref("");
     const showSuggestions = ref(false);
     const suggestions = ref([]);
 
     const search = async () => {
-      if (searchText === "") {
-        showSuggestions = false;
+      if (city_name.value === "") {
+        showSuggestions.value = false;
         suggestions.value = [];
         return;
       }
 
       try {
-        const response = await axios.get(
-          `http://localhost:3005/api/v1/geocode/${searchText.value}`
-        );
+        const response = await axios.get(`/api/v1/geocode/${city_name.value}`);
         suggestions.value = response.data;
-        showSuggestions = true;
+        showSuggestions.value = true;
       } catch (e) {
         console.log(e);
       }
     };
 
-    const selectSuggestion = (suggestion) => {
-      searchText.value = suggestion.formattedAddress;
+    const selectSuggestion = (suggestion: any) => {
+      city_name.value = suggestion.formattedAddress;
       showSuggestions.value = false;
     };
 
-    watch(searchText, () => {
+    watch(city_name, () => {
       search();
     });
 
     return {
-      searchText,
+      city_name,
       showSuggestions,
       suggestions,
       search,
