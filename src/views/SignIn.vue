@@ -63,9 +63,13 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
+import { RouterLink } from "vue-router";
 
 const email_address = ref("");
 const password = ref("");
+
+const router = useRouter();
 
 const login = async () => {
   const data = {
@@ -76,8 +80,10 @@ const login = async () => {
   try {
     const response = await axios.post("/api/v1/auth/login", data);
     console.log(response.data);
+    router.push({ name: "home" });
+    alert(`Bienvenid@ de nuevo!`);
   } catch (e) {
-    if (e.response.status == 401) {
+    if (e.response.status === 401) {
       alert(e.response.data.message);
     }
   }
