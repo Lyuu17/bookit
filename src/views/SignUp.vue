@@ -1,7 +1,7 @@
 <template>
   <div
     class="min-h-screen py-40"
-    style="background-image: linear-gradient(115deg, #d3fdc9, #fdf3c9, #d3fdc9)"
+    style="background-image: linear-gradient(115deg, #d3fdc9, #fceeb0, #d3fdc9)"
   >
     <div class="container mx-auto">
       <div
@@ -62,7 +62,7 @@
               />
             </div>
             <div class="mt-5">
-              <button
+              <input
                 type="button"
                 class="w-full bg-green-300 py-3 text-center text-white cursor-pointer"
                 value="Register Now"
@@ -87,12 +87,15 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
 
 const first_name = ref("");
 const last_name = ref("");
 const birthdate = ref("");
 const email_address = ref("");
 const password = ref("");
+
+const router = useRouter();
 
 const register = async () => {
   try {
@@ -103,6 +106,8 @@ const register = async () => {
       lastName: last_name.value,
       birthdate: new Date(birthdate.value).toISOString().split("T")[0],
     });
+    alert("Usuario creado con éxito");
+    router.push({ name: "home" });
     console.log(response.data);
   } catch (error) {
     console.error(error);
