@@ -13,61 +13,105 @@
     >
       <li
         v-for="suggestion in suggestions"
-        :key="suggestion"
+        :key="suggestion.formattedAddress"
         @click="selectSuggestion(suggestion)"
         class="cursor-pointer"
       >
-        {{ suggestion }}
+        {{ suggestion.city }}, {{ suggestion.country }}
       </li>
     </ul>
   </div>
 </template>
 
-<script lang="ts">
-import { ref, reactive, computed, watch } from "vue";
+<script lang="ts" setup>
+import { ref, computed, watch } from "vue";
 import axios from "axios";
 
-export default {
-  setup() {
-    const city_name = ref("");
-    const showSuggestions = ref(false);
-    const suggestions = ref([]);
+const city_name = ref("");
+const showSuggestions = ref(false);
+const suggestions = ref([]);
 
-    const search = async () => {
-      if (city_name.value === "") {
-        showSuggestions.value = false;
-        suggestions.value = [];
-        return;
-      }
+async function search() {
+  if (!city_name.value) {
+    showSuggestions.value = false;
+    suggestions.value = [];
+    return;
+  }
 
-      try {
-        const response = await axios.get(`/api/v1/geocode/${city_name.value}`);
-        suggestions.value = response.data;
-        showSuggestions.value = true;
-      } catch (e) {
-        console.log(e);
-      }
-    };
+  try {
+    const response = await axios.get(`/api/v1/geocode/${city_name.value}?limit=7`);
+    suggestions.value = response.data.filter(
+      (suggestion: any) => suggestion.city && suggestion.country
+    );
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
 
-    const selectSuggestion = (suggestion: any) => {
-      city_name.value = suggestion.formattedAddress;
-      showSuggestions.value = false;
-    };
+  showSuggestions.value = city_name.value !== "";
+}
 
-    watch(city_name, () => {
-      search();
-    });
+function selectSuggestion(suggestion: any) {
+  city_name.value = suggestion.formattedAddress;
+  showSuggestions.value = false;
+}
 
-    return {
-      city_name,
-      showSuggestions,
-      suggestions,
-      search,
-      selectSuggestion,
-    };
-  },
-};
+watch(city_name, search);
 </script>
+
+<style scoped>
+.autocomplete-input {
+  outline: none;
+}
+
+.autocomplete-list {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+</style>
+
+<style scoped>
+.autocomplete-input {
+  outline: none;
+}
+
+.autocomplete-list {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+</style>
+
+<style scoped>
+.autocomplete-input {
+  outline: none;
+}
+
+.autocomplete-list {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+</style>
 
 <style scoped>
 .autocomplete-input {
