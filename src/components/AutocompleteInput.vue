@@ -13,7 +13,7 @@
     >
       <li
         v-for="suggestion in suggestions"
-        :key="suggestion.formattedAddress"
+        :key="suggestion.city"
         @click="selectSuggestion(suggestion)"
         class="cursor-pointer"
       >
@@ -31,9 +31,11 @@ const city_name = ref("");
 const showSuggestions = ref(false);
 const suggestions = ref([]);
 
+defineEmits(["suggestion-selected"]);
+
 async function search() {
   if (!city_name.value) {
-    showSuggestions.value = false;
+    hideSuggestions();
     suggestions.value = [];
     return;
   }
@@ -48,70 +50,21 @@ async function search() {
     console.error(error);
   }
 
-  showSuggestions.value = city_name.value !== "";
+  showSuggestions.value = suggestions.value.length > 0;
 }
 
 function selectSuggestion(suggestion: any) {
-  city_name.value = suggestion.formattedAddress;
+  city_name.value = suggestion.city + ", " + suggestion.country;
+  hideSuggestions();
+  emit("suggestion-selected", { city: suggestion.city, country: suggestion.country });
+}
+
+function hideSuggestions() {
   showSuggestions.value = false;
 }
 
 watch(city_name, search);
 </script>
-
-<style scoped>
-.autocomplete-input {
-  outline: none;
-}
-
-.autocomplete-list {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  margin-top: 0.5rem;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-}
-</style>
-
-<style scoped>
-.autocomplete-input {
-  outline: none;
-}
-
-.autocomplete-list {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  margin-top: 0.5rem;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-}
-</style>
-
-<style scoped>
-.autocomplete-input {
-  outline: none;
-}
-
-.autocomplete-list {
-  position: absolute;
-  left: 0;
-  top: 100%;
-  margin-top: 0.5rem;
-  width: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-}
-</style>
 
 <style scoped>
 .autocomplete-input {
