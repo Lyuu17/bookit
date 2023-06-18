@@ -24,14 +24,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch } from "vue";
+import { ref, watch } from "vue";
 import axios from "axios";
 
 const city_name = ref("");
 const showSuggestions = ref(false);
 const suggestions = ref([]);
 
-defineEmits(["suggestion-selected"]);
+const emit = defineEmits(["suggestion-selected"]);
 
 async function search() {
   if (!city_name.value) {

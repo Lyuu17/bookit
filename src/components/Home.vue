@@ -19,7 +19,7 @@
         >
           <form action="" class="form-horizontal flex space-x-5">
             <div class="relative">
-              <AutocompleteInput v-model="city" />
+              <AutocompleteInput @suggestion-selected="destination_selected" />
             </div>
             <input
               type="date"
@@ -46,39 +46,40 @@
   </section>
 </template>
 
-<script>
-import AutocompleteInput from "./AutocompleteInput.vue";
-import { ref } from "vue";
+<script lang="ts">
+import { defineComponent, ref } from "vue";
 import axios from "axios";
 
-export default {
+import AutocompleteInput from "./AutocompleteInput.vue";
+
+export default defineComponent({
   components: {
     AutocompleteInput,
   },
   setup() {
     const city = ref("");
+    const country = ref("");
     const checkin = ref("");
     const checkout = ref("");
-    const response = ref();
+    const response = ref<any>(null);
 
-    const CheckinISO = (event) => {
-      const date = new Date(event.target.value);
+    const CheckinISO = (event: Event) => {
+      const date = new Date((event.target as HTMLInputElement).value);
       checkin.value = date.toISOString();
     };
 
-    const CheckoutISO = (event) => {
-      const date = new Date(event.target.value);
+    const CheckoutISO = (event: Event) => {
+      const date = new Date((event.target as HTMLInputElement).value);
       checkout.value = date.toISOString();
     };
 
     const search_hotels = () => {
       axios
-        .get(`http://localhost:3005/api/v1/properties/city/${city.value}`)
-        /*.get(
+        .get(
           `http://localhost:3005/api/v1/properties/availability?checkin=${CheckinISO.value}&checkout=${CheckoutISO.value}`
-        )*/
-        .then((response) => {
-          response.value = response.data;
+        )
+        .then((res) => {
+          response.value = res.data;
           console.log(response.value);
         })
         .catch((err) => {
@@ -86,15 +87,29 @@ export default {
         });
     };
 
+    const destination_selected = ({
+      city,
+      country,
+    }: {
+      city: string;
+      country: string;
+    }) => {
+      city.value = city;
+      country.value = country;
+    };
+
     return {
+      city,
+      country,
       checkin,
       checkout,
       CheckinISO,
       CheckoutISO,
+      destination_selected,
       search_hotels,
     };
   },
-};
+});
 </script>
 
 <style scoped></style>
