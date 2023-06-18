@@ -44,6 +44,7 @@
       </div>
     </div>
   </section>
+  <section><Card /></section>
 </template>
 
 <script lang="ts">
@@ -51,10 +52,12 @@ import { defineComponent, ref } from "vue";
 import axios from "axios";
 
 import AutocompleteInput from "./AutocompleteInput.vue";
+import Card from "./Card.vue";
 
 export default defineComponent({
   components: {
     AutocompleteInput,
+    Card,
   },
   setup() {
     const city = ref("");

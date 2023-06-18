@@ -11,7 +11,6 @@ import Card from "../components/Card.vue";
   </header>
   <main>
     <Home />
-    <Card />
   </main>
   <Footer id="footer"></Footer>
 </template>
