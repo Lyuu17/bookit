@@ -13,7 +13,7 @@
     >
       <li
         v-for="suggestion in suggestions"
-        :key="suggestion.city"
+        :key="suggestion"
         @click="selectSuggestion(suggestion)"
         class="cursor-pointer"
       >
@@ -45,7 +45,6 @@ async function search() {
     suggestions.value = response.data.filter(
       (suggestion: any) => suggestion.city && suggestion.country
     );
-    console.log(response.data);
   } catch (error) {
     console.error(error);
   }

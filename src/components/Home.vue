@@ -34,8 +34,8 @@
               placeholder="Check-out"
             />
             <input
-              type="submit"
-              class="btn cursor-pointer"
+              type="button"
+              class="w-fit p-3 rounded-md bg-green-300 text-center text-white cursor-pointer"
               value="Search"
               @click="search_hotels"
             />
@@ -61,22 +61,16 @@ export default defineComponent({
     const country = ref("");
     const checkin = ref("");
     const checkout = ref("");
-    const response = ref<any>(null);
-
-    const CheckinISO = (event: Event) => {
-      const date = new Date((event.target as HTMLInputElement).value);
-      checkin.value = date.toISOString();
-    };
-
-    const CheckoutISO = (event: Event) => {
-      const date = new Date((event.target as HTMLInputElement).value);
-      checkout.value = date.toISOString();
-    };
+    const response = ref("");
+    const hotels = ref([]);
 
     const search_hotels = () => {
+      const checkinISO = new Date(checkin.value).toISOString();
+      const checkoutISO = new Date(checkout.value).toISOString();
+
       axios
         .get(
-          `http://localhost:3005/api/v1/properties/availability?checkin=${CheckinISO.value}&checkout=${CheckoutISO.value}`
+          `/api/v1/properties/availability?checkin=${checkinISO}&checkout=${checkoutISO}&city=${city.value}&country=${country.value}`
         )
         .then((res) => {
           response.value = res.data;
@@ -87,15 +81,10 @@ export default defineComponent({
         });
     };
 
-    const destination_selected = ({
-      city,
-      country,
-    }: {
-      city: string;
-      country: string;
-    }) => {
-      city.value = city;
-      country.value = country;
+    const destination_selected = (data: { city: string; country: string }) => {
+      // Guardar los datos en variables separadas
+      city.value = data.city;
+      country.value = data.country;
     };
 
     return {
@@ -103,10 +92,9 @@ export default defineComponent({
       country,
       checkin,
       checkout,
-      CheckinISO,
-      CheckoutISO,
       destination_selected,
       search_hotels,
+      hotels,
     };
   },
 });
