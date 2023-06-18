@@ -44,7 +44,12 @@
       </div>
     </div>
   </section>
-  <section><Card /></section>
+  <section>
+    <div class="inline-table p-3" v-for="hotel in hotels" :key="hotel.id">
+      <Card :hotels="hotels" />
+    </div>
+  </section>
+  <section><Carousel /></section>
 </template>
 
 <script lang="ts">
@@ -53,18 +58,19 @@ import axios from "axios";
 
 import AutocompleteInput from "./AutocompleteInput.vue";
 import Card from "./Card.vue";
+import Carousel from "./Carousel.vue";
 
 export default defineComponent({
   components: {
     AutocompleteInput,
     Card,
+    Carousel,
   },
   setup() {
     const city = ref("");
     const country = ref("");
     const checkin = ref("");
     const checkout = ref("");
-    const response = ref("");
     const hotels = ref([]);
 
     const search_hotels = () => {
@@ -76,8 +82,7 @@ export default defineComponent({
           `/api/v1/properties/availability?checkin=${checkinISO}&checkout=${checkoutISO}&city=${city.value}&country=${country.value}`
         )
         .then((res) => {
-          response.value = res.data;
-          console.log(response.value);
+          hotels.value = res.data;
         })
         .catch((err) => {
           console.error(err);
@@ -95,12 +100,12 @@ export default defineComponent({
       country,
       checkin,
       checkout,
+      hotels,
       destination_selected,
       search_hotels,
-      hotels,
     };
   },
 });
 </script>
 
-<style scoped></style>
+<style></style>
