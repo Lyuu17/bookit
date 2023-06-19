@@ -56,6 +56,18 @@ export default defineComponent({
       required: true,
     },
   },
+  setup(props) {
+    const router = useRouter();
+
+    const booking = () => {
+      const hotelId = props.hotel.id;
+      router.push(`/hotel/${hotelId}`);
+    };
+
+    return {
+      booking,
+    };
+  },
 });
 </script>
 
