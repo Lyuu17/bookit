@@ -2,7 +2,7 @@
   <section class="brands">
     <div class="w-full overflow-hidden">
       <h1
-        class="text-center py-7 text-4xl font-bold bg-gradient-to-r from-green-700 to-green-300 bg-clip-text text-transparent bg-green-700 transition-all duration-10000"
+        class="text-center py-7 text-4xl font-bold bg-gradient-to-r from-blue-700 to-blue-300 bg-clip-text text-transparent bg-blue-700 transition-all duration-10000"
       >
         Our Collaborators
       </h1>
