@@ -1,11 +1,13 @@
 <template>
   <!-- Container for demo purpose -->
-  <div class="container my-24 mx-auto md:px-6">
+  <div class="container my-24 mx-auto md:px-16">
     <!-- Section: Design Block -->
     <section class="mb-32">
-      <h2 class="mb-12 text-center text-3xl font-bold">
+      <h1
+        class="text-center py-7 text-4xl font-bold bg-gradient-to-r from-blue-700 to-blue-300 bg-clip-text text-transparent bg-blue-700 transition-all duration-10000"
+      >
         Don't know where to go? These are our popular places.
-      </h2>
+      </h1>
 
       <div class="grid gap-6 lg:grid-cols-3">
         <div
@@ -14,7 +16,7 @@
           data-te-ripple-color="dark"
         >
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.jpg"
+            src="https://images.pexels.com/photos/1688186/pexels-photo-1688186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             class="w-full align-middle transition duration-300 ease-linear"
           />
           <a href="#!">
@@ -22,7 +24,7 @@
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.3)]"
             >
               <div class="flex h-full items-end justify-start">
-                <h5 class="m-6 text-lg font-bold text-white">Hollywood exhibition</h5>
+                <h5 class="m-6 text-lg font-bold text-white">Hollywood, Unites States</h5>
               </div>
             </div>
             <div>
@@ -39,7 +41,7 @@
           data-te-ripple-color="dark"
         >
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.jpg"
+            src="https://images.pexels.com/photos/161815/santorini-oia-greece-water-161815.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             class="w-full align-middle transition duration-300 ease-linear"
           />
           <a href="#!">
@@ -47,7 +49,7 @@
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.3)]"
             >
               <div class="flex h-full items-end justify-start">
-                <h5 class="m-6 text-lg font-bold text-white">Genius Loci</h5>
+                <h5 class="m-6 text-lg font-bold text-white">Santorini, Greece</h5>
               </div>
             </div>
             <div>
@@ -64,7 +66,7 @@
           data-te-ripple-color="dark"
         >
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/standard/city/045.jpg"
+            src="https://images.pexels.com/photos/16849260/pexels-photo-16849260/free-photo-of-ciudad-inca.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             class="w-full align-middle transition duration-300 ease-linear"
           />
           <a href="#!">
@@ -72,7 +74,7 @@
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.3)]"
             >
               <div class="flex h-full items-end justify-start">
-                <h5 class="m-6 text-lg font-bold text-white">Big Apple</h5>
+                <h5 class="m-6 text-lg font-bold text-white">Machu picchu, Peru</h5>
               </div>
             </div>
             <div>
@@ -89,7 +91,7 @@
           data-te-ripple-color="dark"
         >
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/standard/city/047.jpg"
+            src="https://images.pexels.com/photos/14187938/pexels-photo-14187938.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             class="w-full align-middle transition duration-300 ease-linear"
           />
           <a href="#!">
@@ -97,7 +99,7 @@
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.3)]"
             >
               <div class="flex h-full items-end justify-start">
-                <h5 class="m-6 text-lg font-bold text-white">Sun City</h5>
+                <h5 class="m-6 text-lg font-bold text-white">Zermatt</h5>
               </div>
             </div>
             <div>
@@ -122,7 +124,7 @@
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.3)]"
             >
               <div class="flex h-full items-end justify-start">
-                <h5 class="m-6 text-lg font-bold text-white">Paris flavor</h5>
+                <h5 class="m-6 text-lg font-bold text-white">Paris</h5>
               </div>
             </div>
             <div>
@@ -139,7 +141,7 @@
           data-te-ripple-color="dark"
         >
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/standard/city/049.jpg"
+            src="https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             class="w-full align-middle transition duration-300 ease-linear"
           />
           <a href="#!">
@@ -147,7 +149,7 @@
               class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-fixed bg-[hsla(0,0%,0%,0.3)]"
             >
               <div class="flex h-full items-end justify-start">
-                <h5 class="m-6 text-lg font-bold text-white">Sky is the limit</h5>
+                <h5 class="m-6 text-lg font-bold text-white">Shanghai, China</h5>
               </div>
             </div>
             <div>
