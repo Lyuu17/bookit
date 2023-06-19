@@ -31,23 +31,19 @@
           </li>
         </ul>
       </div>
-
-      <div class="px-6 py-4">
-        <button
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          @click="bookHotel"
-        >
-          Book Now
-        </button>
-      </div>
     </div>
   </div>
+  <Testimonies />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import Testimonies from "../components/Testimonies.vue";
 
 export default defineComponent({
+  components: {
+    Testimonies,
+  },
   computed: {
     hotel() {
       const hotel = this.$route.query.hotel;
