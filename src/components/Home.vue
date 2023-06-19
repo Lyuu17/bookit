@@ -46,7 +46,7 @@
   </section>
   <section>
     <div class="inline-table p-3" v-for="hotel in hotels" :key="hotel.id">
-      <Card :hotels="hotels" />
+      <Card :hotel="hotel" />
     </div>
   </section>
   <section><Carousel /></section>
@@ -83,6 +83,7 @@ export default defineComponent({
         )
         .then((res) => {
           hotels.value = res.data;
+          console.log(hotels.value);
         })
         .catch((err) => {
           console.error(err);
