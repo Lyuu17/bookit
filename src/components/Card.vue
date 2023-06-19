@@ -61,7 +61,12 @@ export default defineComponent({
 
     const booking = () => {
       const hotelId = props.hotel.id;
-      router.push(`/hotel/${hotelId}`);
+      console.log(hotelId.value);
+      router.push({
+        name: "hotel",
+        params: { id: hotelId },
+        query: { hotel: JSON.stringify(props.hotel) },
+      });
     };
 
     return {
