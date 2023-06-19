@@ -35,7 +35,7 @@
             />
             <input
               type="button"
-              class="w-fit p-3 rounded-md bg-green-300 text-center text-white cursor-pointer"
+              class="w-fit p-3 rounded-md bg-blue-300 text-center text-white cursor-pointer"
               value="Search"
               @click="search_hotels"
             />
@@ -49,6 +49,7 @@
       <Card :hotel="hotel" />
     </div>
   </section>
+  <section><Popular_Places /></section>
   <section><Carousel /></section>
 </template>
 
@@ -59,12 +60,14 @@ import axios from "axios";
 import AutocompleteInput from "./AutocompleteInput.vue";
 import Card from "./Card.vue";
 import Carousel from "./Carousel.vue";
+import Popular_Places from "./Popular_Places.vue";
 
 export default defineComponent({
   components: {
     AutocompleteInput,
     Card,
     Carousel,
+    Popular_Places,
   },
   setup() {
     const city = ref("");
