@@ -30,15 +30,13 @@
     <div class="mt-8 text-center">
       <h2 class="text-2xl font-bold">Check-in</h2>
       <p class="text-lg">
-        Horario de Check-in: {{ hotel.checkin.begin_time }} - {{ hotel.checkin.end_time }}
+        Check-in hours: {{ hotel.checkin.begin_time }} - {{ hotel.checkin.end_time }}
       </p>
       <p class="text-lg">Minimun age: {{ hotel.checkin.min_age }}</p>
     </div>
   </section>
   <section>
-    <p class="text-lg">
-      Instrucciones para el Check-in: {{ hotel.checkin.instructions }}
-    </p>
+    <p class="text-lg">Check-in instructions: {{ hotel.checkin.instructions }}</p>
   </section>
   <Testimonies />
 </template>

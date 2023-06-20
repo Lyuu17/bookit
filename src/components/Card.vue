@@ -1,11 +1,8 @@
 <template>
   <div
-    class="w-full inline-block max-w-sm bg-white border border-gray-200 m-5 rounded-lg shadow-xl"
+    class="w-full inline-block min-w bg-white border border-gray-200 m-5 rounded-lg shadow-xl"
   >
-    <a href="#">
-      <img class="p-8 rounded-t-lg" src="" alt="image_hotel" />
-    </a>
-    <div class="px-5 pb-5">
+    <div class="p-5 pb-5">
       <h5 class="text-xl font-semibold tracking-tight text-gray-900">
         {{ hotel.name }}
       </h5>
