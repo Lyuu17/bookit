@@ -31,15 +31,19 @@
           >
             <li>
               {{ beds.description }}
-              <ul>
-                <li v-for="details in room.bed_groups.configuration" :key="details.type">
-                  {{ details.type }}
-                </li>
+              <ul
+                v-for="config in beds.configuration"
+                class="mb-3 ml-5 font-normal list-disc list-inside text-gray-700 dark:text-gray-500"
+              >
+                <li>{{ config.type }}</li>
+                <li>{{ config.size }}</li>
+                <li>{{ config.base_price }}</li>
               </ul>
             </li>
           </ul>
         </div>
       </div>
+
       <a
         href="#"
         class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -51,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   props: {
