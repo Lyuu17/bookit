@@ -45,10 +45,10 @@
       </div>
     </section>
     <section class="mt-8 text-center">
-      <h2 class="text-3xl font-bold py-5">Our rooms</h2>
-      <div class="flex justify-center">
+      <h2 class="text-3xl font-bold py-6">Our rooms</h2>
+      <div class="flex justify-center space-x-5">
         <div v-for="room in hotel.rooms" class="mx-2">
-          <CardRoom />
+          <CardRoom :room="room" />
         </div>
       </div>
     </section>
