@@ -35,8 +35,8 @@
                 v-for="config in beds.configuration"
                 class="mb-3 ml-5 font-normal list-disc list-inside text-gray-700 dark:text-gray-500"
               >
-                <li>{{ config.type }}</li>
-                <li>{{ config.size }}</li>
+                <li>Type: {{ config.type }}</li>
+                <li>Size: {{ config.size }}</li>
                 <div>
                   <p class="text-xl font-bold mt-4 text-gray-900 dark:text-black">
                     Base price:

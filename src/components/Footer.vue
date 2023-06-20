@@ -1,74 +1,28 @@
 <template>
-  <div class="mx-auto w-full max-w-screen-xl">
-    <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
-      <div>
-        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-          Company
-        </h2>
-        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-          <li class="mb-4">
-            <a href="#" class="hover:underline">About</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Brand Center</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-          Help center
-        </h2>
-        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Twitter</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Facebook</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-          Legal
-        </h2>
-        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Privacy Policy</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Licensing</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-          Download
-        </h2>
-        <ul class="text-gray-500 dark:text-gray-400 font-medium">
-          <li class="mb-4">
-            <a href="#" class="hover:underline">iOS</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Android</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">Windows</a>
-          </li>
-          <li class="mb-4">
-            <a href="#" class="hover:underline">MacOS</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <footer
+    id="footer"
+    class="bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600"
+  >
+    <span class="text-md text-gray-500 sm:text-center dark:text-gray-400"
+      >© 2023 <a href="" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+    </span>
+    <ul
+      class="flex flex-wrap items-center mt-3 text-md font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+    >
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+      </li>
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+      </li>
+      <li>
+        <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+      </li>
+      <li>
+        <a href="#" class="hover:underline">Contact</a>
+      </li>
+    </ul>
+  </footer>
 </template>
-
-<script></script>
-
-<style scoped></style>
+<script lang="ts"></script>
+<style></style>

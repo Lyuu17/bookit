@@ -15,7 +15,7 @@
         </div>
       </div>
     </section>
-    <section class="bg-gray-100 pb-5">
+    <section class="bg-gray-200 pb-5">
       <div class="container mx-auto grid grid-cols-2 gap-4">
         <div class="mt-8 flex flex-col items-center border-r-4">
           <h2 class="text-2xl pb-5 font-bold">Contact Details</h2>
@@ -54,17 +54,20 @@
     </section>
     <Testimonies />
   </div>
+  <Footer />
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 import Testimonies from "../components/Testimonies.vue";
 import CardRoom from "../components/CardRoom.vue";
+import Footer from "../components/Footer.vue";
 
 export default defineComponent({
   components: {
     Testimonies,
     CardRoom,
+    Footer,
   },
   computed: {
     hotel() {
