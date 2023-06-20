@@ -63,12 +63,14 @@
 <script lang="ts" setup>
 import axios from "axios";
 import { ref } from "vue";
+import { useStore } from "pinia";
 import { RouterLink, useRouter } from "vue-router";
 
 const email_address = ref("");
 const password = ref("");
 
 const router = useRouter();
+const store = useStore();
 
 const login = async () => {
   const data = {
@@ -79,6 +81,7 @@ const login = async () => {
   try {
     const response = await axios.post("/api/v1/auth/login", data);
     console.log(response.data);
+    store.setResponseData(response.data);
     router.push({ name: "home" });
     alert(`Bienvenid@ de nuevo!`);
   } catch (e: any) {
