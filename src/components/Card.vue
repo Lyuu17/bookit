@@ -11,7 +11,7 @@
       </h6>
       <div class="flex items-center mt-2.5 mb-5">
         <div class="flex flex-row">
-          <HotelStarSvg v-for="star of [0, 1, 2, 3, 4]"/>
+          <HotelStarSvg v-for="star of [0, 1, 2, 3, 4]" />
         </div>
 
         <span
@@ -33,8 +33,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-
-import HotelStarSvg from '@/components/HotelStarSvg.vue';
+import HotelStarSvg from "@/components/HotelStarSvg.vue";
 
 const props = defineProps({
   hotel: {

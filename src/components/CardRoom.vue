@@ -25,16 +25,13 @@
         <li>Type: {{ room.type }}</li>
         <li>Size: {{ room.size }}</li>
         <div>
-          <p
-            class="text-xl text-right font-bold mt-4 text-gray-900 dark:text-black"
-          >
+          <p class="text-xl text-right font-bold mt-4 text-gray-900 dark:text-black">
             <span class="text-md font-bold mt-4 text-gray-900 dark:text-black"
               >{{ room.price }} €</span
             >
           </p>
         </div>
       </div>
-
       <div>
         <div class="flex items-center justify-end">
           <input
@@ -47,19 +44,22 @@
       </div>
     </div>
   </div>
-  <div v-if="showModal" class="fixed inset-0 flex items-center justify-center z-50">
-    <div><Modal_Booking /></div>
+  <div v-if="showModal" class="fixed inset-0 flex items-center justify-center">
+    <div><Modal_Booking class="z-50" /></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Modal_Booking from "./Modal_Booking.vue";
+import { ref } from "vue";
+import Modal_Booking from "@/components/Modal_Booking.vue";
+
+const showModal = ref(false);
 
 defineProps({
   room: {
     type: Object,
     required: true,
-  }
+  },
 });
 
 const imageUrls = [
@@ -72,8 +72,14 @@ const imageUrls = [
 ];
 
 const imageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
-const book = () => {
-  alert("Thank you for trusting us. You have booked your room.");
+
+const openModal = () => {
+  showModal.value = true;
+  console.log("se abre");
+};
+
+const closeModal = () => {
+  showModal.value = false;
 };
 </script>
 
