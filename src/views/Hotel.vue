@@ -4,7 +4,7 @@
       <div class="relative w-screen h-96">
         <img
           src="https://images.pexels.com/photos/2869215/pexels-photo-2869215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Imagen del hotel"
+          alt="Hotel image"
           class="w-full h-full object-cover backdrop-filter backdrop-blur-sm brightness-75"
         />
         <div
@@ -40,15 +40,13 @@
         <p class="text-lg">
           Check-in hours: {{ hotel.checkin.begin_time }} - {{ hotel.checkin.end_time }}
         </p>
-        <p class="text-lg">Minimun age: {{ hotel.checkin.min_age }}</p>
+        <p class="text-lg">Minimum age: {{ hotel.checkin.min_age }}</p>
       </div>
     </section>
     <section class="mt-8 text-center">
       <h2 class="text-3xl font-bold py-6">Our rooms</h2>
-      <div class="flex justify-center space-x-5">
-        <div v-for="room in hotel.rooms" class="mx-2">
-          <CardRoom :room="room" />
-        </div>
+      <div class="flex justify-center flex-wrap">
+        <CardRoom :room="room" v-for="room in rooms" />
       </div>
     </section>
     <Testimonies />
@@ -64,11 +62,33 @@ import CardRoom from "@/components/CardRoom.vue";
 import Testimonies from "@/components/Testimonies.vue";
 
 const route = useRoute();
-const hotel: any = ref({});
+const hotel = ref<any>({});
+const rooms = ref<any>([]);
 
 onBeforeMount(async () => {
   const { data } = await axios.get(`/api/v1/properties/${route.params.id}`);
   hotel.value = data;
+
+  data.rooms.forEach((room: any) => {
+    room.bed_groups.forEach((bedgroup: any) => {
+      bedgroup.configuration.forEach((bedgroupConfig: any) => {
+        let { name } = room;
+        if (bedgroup.description != '')
+          name = `${name}, ${bedgroup.description}`;
+        if (bedgroupConfig.type != '')
+            name = `${name}, ${bedgroupConfig.type}`;
+
+        rooms.value.push({
+          name: name,
+          quantity: bedgroupConfig.quantity,
+          type: bedgroupConfig.type,
+          price: bedgroupConfig.base_price,
+          size: bedgroupConfig.size,
+          amenities: room.amenities
+        });
+      });
+    });
+  });
 });
 
 </script>

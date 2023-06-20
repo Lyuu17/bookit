@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-200 dark:border-gray-700"
+    class="max-w-sm m-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-200 dark:border-gray-700"
   >
     <a href="#">
       <img class="rounded-t-lg" :src="imageUrl" alt="" />
@@ -20,43 +20,29 @@
         </ul>
       </div>
       <hr class="border-b border-gray-500 border-opacity-50" />
-      <div>
-        <h5 class="my-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-grey">
-          Bed groups
-        </h5>
-        <div class="text-start">
-          <ul
-            v-for="beds in room.bed_groups"
-            class="mb-3 font-normal list-disc list-inside text-gray-700 dark:text-gray-500"
+
+      <div class="mb-3 mt-3 ml-4 font-normal text-start text-gray-700 dark:text-gray-500">
+        <li>Type: {{ room.type }}</li>
+        <li>Size: {{ room.size }}</li>
+        <div>
+          <p
+            class="text-xl text-right font-bold mt-4 text-gray-900 dark:text-black"
           >
-            <li>
-              {{ beds.description }}
-              <ul
-                v-for="config in beds.configuration"
-                class="mb-3 ml-5 font-normal list-disc list-inside text-gray-700 dark:text-gray-500"
-              >
-                <li>Type: {{ config.type }}</li>
-                <li>Size: {{ config.size }}</li>
-                <div>
-                  <p
-                    class="text-xl text-right font-bold mt-4 text-gray-900 dark:text-black"
-                  >
-                    <span class="text-md font-bold mt-4 text-gray-900 dark:text-black"
-                      >{{ config.base_price }} €</span
-                    >
-                  </p>
-                </div>
-              </ul>
-            </li>
-            <div class="flex items-center justify-end">
-              <input
-                type="button"
-                @click="openModal"
-                value="Booking"
-                class="cursor-pointer inline-flex items-center px-3 py-2 text-md font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-auto"
-              />
-            </div>
-          </ul>
+            <span class="text-md font-bold mt-4 text-gray-900 dark:text-black"
+              >{{ room.price }} €</span
+            >
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-end">
+          <input
+            type="button"
+            @click="openModal"
+            value="Booking"
+            class="cursor-pointer inline-flex items-center px-3 py-2 text-md font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-auto"
+          />
         </div>
       </div>
     </div>
@@ -67,14 +53,13 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, ref } from "vue";
 import Modal_Booking from "./Modal_Booking.vue";
 
 defineProps({
   room: {
     type: Object,
     required: true,
-  },
+  }
 });
 
 const imageUrls = [
