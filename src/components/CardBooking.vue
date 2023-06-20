@@ -1,26 +1,32 @@
 <template>
   <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
     <div class="px-6 py-4">
-      <div class="font-bold text-xl mb-2">{{ hotelName }} Hotel name</div>
+      <div class="font-bold text-xl mb-2 text-center">{{ itinerary.name }}</div>
       <div class="mb-2">
-        <span class="font-semibold"
-          >Check-in:
-          <p class="font-normal">{{ checkinDate }} checkin</p></span
-        >
+        <span class="font-semibold">Check-in:</span> {{ itinerary.checkin }}
       </div>
       <div class="mb-2">
-        <span class="font-semibold">Check-out:</span> {{ checkoutDate }}
+        <span class="font-semibold">Check-out:</span> {{ itinerary.checkout }}
       </div>
       <div class="mb-2">
-        <span class="font-semibold">Número de adultos:</span> {{ numberOfAdults }}
+        <span class="font-semibold">Adults:</span> {{ itinerary.num_adults }}
       </div>
       <div class="mb-2">
-        <span class="font-semibold">Número de niños:</span> {{ numberOfChildren }}
+        <span class="font-semibold">Children:</span> {{ itinerary.num_children }}
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts"></script>
+<script setup lang="ts">
+
+defineProps({
+  itinerary: {
+    type: Object,
+    required: true
+  }
+})
+
+</script>
 
 <style scoped></style>
