@@ -38,7 +38,9 @@
                 <li>Type: {{ config.type }}</li>
                 <li>Size: {{ config.size }}</li>
                 <div>
-                  <p class="text-xl font-bold mt-4 text-gray-900 dark:text-black">
+                  <p
+                    class="text-xl text-right font-bold mt-4 text-gray-900 dark:text-black"
+                  >
                     <span class="text-md font-bold mt-4 text-gray-900 dark:text-black"
                       >{{ config.base_price }} €</span
                     >
@@ -46,12 +48,12 @@
                 </div>
               </ul>
             </li>
-            <div class="items-center">
+            <div class="flex items-center justify-end">
               <input
                 type="button"
-                @click="book"
+                @click="openModal"
                 value="Booking"
-                class="cursor-pointer mx-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="cursor-pointer inline-flex items-center px-3 py-2 text-md font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ml-auto"
               />
             </div>
           </ul>
@@ -59,15 +61,20 @@
       </div>
     </div>
   </div>
+  <div v-if="showModal" class="fixed inset-0 flex items-center justify-center z-50">
+    <div><Modal_Booking /></div>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { defineComponent, ref } from "vue";
+import Modal_Booking from "./Modal_Booking.vue";
 
 defineProps({
   room: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 });
 
 const imageUrls = [
