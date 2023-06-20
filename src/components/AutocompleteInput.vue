@@ -8,14 +8,14 @@
       placeholder="City Name"
     />
     <ul
-      v-if="showSuggestions && suggestions.length"
+      v-if="suggestionsShowing && suggestions.length"
       class="absolute left-0 top-full mt-2 w-full bg-white border border-gray-300 rounded-md p-2 autocomplete-list"
     >
       <li
         v-for="suggestion in suggestions"
         :key="suggestion"
         @click="selectSuggestion(suggestion)"
-        class="cursor-pointer"
+        class="cursor-pointer hover:bg-neutral-300"
       >
         {{ suggestion.city }}, {{ suggestion.country }}
       </li>
@@ -28,38 +28,57 @@ import axios from "axios";
 import { ref, watch } from "vue";
 
 const city_name = ref("");
-const showSuggestions = ref(false);
+const suggestionsShowing = ref(false);
 const suggestions = ref<any[]>([]);
+const suggestionTimeout: any = ref(null);
+const suggestionWasUpdated = ref(false);
 
 const emit = defineEmits(["suggestion-selected"]);
 
-const search = async() => {
-  if (!city_name.value) {
-    hideSuggestions();
-    suggestions.value = [];
+const search = async () => {
+  if (suggestionWasUpdated.value) {
+    suggestionWasUpdated.value = false;
     return;
   }
 
-  try {
-    const response = await axios.get(`/api/v1/geocode/${city_name.value}?limit=7`);
-    suggestions.value = response.data.filter(
-      (suggestion: any) => suggestion.city && suggestion.country
-    );
-  } catch (error) {
-    console.error(error);
+  if (city_name.value.trim().length < 3) {
+    hideSuggestions();
+    return;
   }
 
-  showSuggestions.value = suggestions.value.length > 0;
+  if (suggestionTimeout.value) {
+    clearTimeout(suggestionTimeout.value);
+    suggestionTimeout.value = null;
+  }
+
+  suggestionTimeout.value = setTimeout(async () => {
+    try {
+      const { data } = await axios.get(`/api/v1/geocode/${city_name.value}?limit=7`);
+      suggestions.value = data.filter(
+        (suggestion: any) => suggestion.city && suggestion.country
+      );
+    } catch (error) {
+      console.error(error);
+    }
+
+    suggestionsShowing.value = suggestions.value.length > 0;
+  }, 400);
 }
 
 const selectSuggestion = (suggestion: any) => {
-  city_name.value = suggestion.city + ", " + suggestion.country;
+  city_name.value = `${suggestion.city}, ${suggestion.country}`;
+  suggestionWasUpdated.value = true;
   hideSuggestions();
   emit("suggestion-selected", { city: suggestion.city, country: suggestion.country });
 }
 
 const hideSuggestions = () => {
-  showSuggestions.value = false;
+  suggestionsShowing.value = false;
+  suggestions.value = [];
+}
+
+const showSuggestions = () => {
+  suggestionsShowing.value = true;
 }
 
 watch(city_name, search);
