@@ -41,35 +41,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import { useRouter } from "vue-router";
 
-export default defineComponent({
-  props: {
-    hotel: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props) {
-    const router = useRouter();
-
-    const booking = () => {
-      const hotelId = props.hotel.id;
-      console.log(hotelId.value);
-      router.push({
-        name: "hotel",
-        params: { id: hotelId },
-        query: { hotel: JSON.stringify(props.hotel) },
-      });
-    };
-
-    return {
-      booking,
-    };
+const props = defineProps({
+  hotel: {
+    type: Object,
+    required: true,
   },
 });
+
+const router = useRouter();
+const booking = () => {
+  const { id } = props.hotel;
+  router.push({
+    name: "hotel",
+    params: { id: id },
+  });
+};
 </script>
 
 <style scoped></style>

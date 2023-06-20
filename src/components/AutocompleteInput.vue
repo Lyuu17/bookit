@@ -24,16 +24,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from "vue";
 import axios from "axios";
+import { ref, watch } from "vue";
 
 const city_name = ref("");
 const showSuggestions = ref(false);
-const suggestions = ref([]);
+const suggestions = ref<any[]>([]);
 
 const emit = defineEmits(["suggestion-selected"]);
 
-async function search() {
+const search = async() => {
   if (!city_name.value) {
     hideSuggestions();
     suggestions.value = [];
@@ -52,13 +52,13 @@ async function search() {
   showSuggestions.value = suggestions.value.length > 0;
 }
 
-function selectSuggestion(suggestion: any) {
+const selectSuggestion = (suggestion: any) => {
   city_name.value = suggestion.city + ", " + suggestion.country;
   hideSuggestions();
   emit("suggestion-selected", { city: suggestion.city, country: suggestion.country });
 }
 
-function hideSuggestions() {
+const hideSuggestions = () => {
   showSuggestions.value = false;
 }
 
