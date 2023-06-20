@@ -85,8 +85,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import axios from "axios";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const first_name = ref("");
@@ -109,7 +109,7 @@ const register = async () => {
     alert("Usuario creado con éxito");
     router.push({ name: "home" });
     console.log(response.data);
-  } catch (e) {
+  } catch (e: any) {
     if (e.response.status === 401) {
       alert(e.response.data.message);
     }

@@ -53,63 +53,38 @@
   <section><Carousel /></section>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script setup lang="ts">
 import axios from "axios";
+import { ref } from "vue";
 
 import AutocompleteInput from "./AutocompleteInput.vue";
 import Card from "./Card.vue";
 import Carousel from "./Carousel.vue";
 import Popular_Places from "./Popular_Places.vue";
 
-export default defineComponent({
-  components: {
-    AutocompleteInput,
-    Card,
-    Carousel,
-    Popular_Places,
-  },
-  setup() {
-    const city = ref("");
-    const country = ref("");
-    const checkin = ref("");
-    const checkout = ref("");
-    const hotels = ref([]);
-
-    const search_hotels = () => {
-      const checkinISO = new Date(checkin.value).toISOString();
-      const checkoutISO = new Date(checkout.value).toISOString();
-
-      axios
-        .get(
-          `/api/v1/properties/availability?checkin=${checkinISO}&checkout=${checkoutISO}&city=${city.value}&country=${country.value}`
-        )
-        .then((res) => {
-          hotels.value = res.data;
-          console.log(hotels.value);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    };
-
-    const destination_selected = (data: { city: string; country: string }) => {
-      // Guardar los datos en variables separadas
-      city.value = data.city;
-      country.value = data.country;
-    };
-
-    return {
-      city,
-      country,
-      checkin,
-      checkout,
-      hotels,
-      destination_selected,
-      search_hotels,
-    };
-  },
-});
+const city = ref("");
+const country = ref("");
+const checkin = ref("");
+const checkout = ref("");
+const hotels = ref<any[]>([]);
+const search_hotels = () => {
+  const checkinISO = new Date(checkin.value).toISOString();
+  const checkoutISO = new Date(checkout.value).toISOString();
+  axios
+    .get(
+      `/api/v1/properties/availability?checkin=${checkinISO}&checkout=${checkoutISO}&city=${city.value}&country=${country.value}`
+    )
+    .then((res) => {
+      hotels.value = res.data;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+const destination_selected = (data: { city: string; country: string }) => {
+  city.value = data.city;
+  country.value = data.country;
+};
 </script>
 
 <style></style>

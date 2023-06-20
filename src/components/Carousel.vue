@@ -54,17 +54,14 @@
   </section>
 </template>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      currentIndex: 0,
-    };
-  },
-  mounted() {
-    setInterval(() => {
-      this.currentIndex += 1;
-    }, 2500);
-  },
-};
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+
+const currentIndex = ref(0);
+
+onMounted(() => {
+  setInterval(() => {
+    currentIndex.value += 1;
+  }, 2500);
+});
 </script>

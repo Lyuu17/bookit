@@ -61,10 +61,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import axios from "axios";
-import { useRouter } from "vue-router";
-import { RouterLink } from "vue-router";
+import { ref } from "vue";
+import { RouterLink, useRouter } from "vue-router";
 
 const email_address = ref("");
 const password = ref("");
@@ -82,7 +81,7 @@ const login = async () => {
     console.log(response.data);
     router.push({ name: "home" });
     alert(`Bienvenid@ de nuevo!`);
-  } catch (e) {
+  } catch (e: any) {
     if (e.response.status === 401) {
       alert(e.response.data.message);
     }

@@ -53,29 +53,22 @@
     </section>
     <Testimonies />
   </div>
-  <Footer />
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from "vue";
-import Testimonies from "../components/Testimonies.vue";
-import CardRoom from "../components/CardRoom.vue";
-import Footer from "../components/Footer.vue";
+<script setup lang="ts">
+import axios from "axios";
+import { onBeforeMount, ref } from "vue";
+import { useRoute } from "vue-router";
 
-export default defineComponent({
-  components: {
-    Testimonies,
-    CardRoom,
-    Footer,
-  },
-  computed: {
-    hotel() {
-      const hotel = this.$route.query.hotel;
-      if (hotel) {
-        return JSON.parse(hotel);
-      }
-      return null;
-    },
-  },
+import CardRoom from "@/components/CardRoom.vue";
+import Testimonies from "@/components/Testimonies.vue";
+
+const route = useRoute();
+const hotel: any = ref({});
+
+onBeforeMount(async () => {
+  const { data } = await axios.get(`/api/v1/properties/${route.params.id}`);
+  hotel.value = data;
 });
+
 </script>
