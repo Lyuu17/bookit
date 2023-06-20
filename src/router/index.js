@@ -14,12 +14,12 @@ const router = createRouter({
     {
       path: '/signup',
       name: 'signup',
-      component: () => import('@/views/SignUp.vue')
+      component: () => import('@/views/SignUpView.vue')
     },
     {
       path: "/signin",
       name: "signin",
-      component: () => import('@/views/SignIn.vue')
+      component: () => import('@/views/SignInView.vue')
     },
     {
       path: '/hotel/:id',
@@ -28,7 +28,7 @@ const router = createRouter({
     },{
       path: '/my-bookings',
       name: 'my-bookings',
-      component: () => import('@/views/My_Bookings.vue')
+      component: () => import('@/views/MyBookingsView.vue')
     }
   ]
 })
