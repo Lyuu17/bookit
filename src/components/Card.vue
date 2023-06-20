@@ -29,11 +29,10 @@
 
         <span
           class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3"
-          >{{ hotel.rating }}</span
+          >5</span
         >
       </div>
       <div class="flex items-center justify-between">
-        <span class="text-3xl font-bold text-gray-900">$599</span>
         <input
           type="button"
           class="text-white focus:ring-4 bg-green-500 py-2 focus:outline-none font-medium rounded-lg text-base px-5 text-center"

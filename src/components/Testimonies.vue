@@ -1,5 +1,5 @@
 <template>
-  <div class="container my-24 mx-auto md:px-6">
+  <div class="container my-24 mx-auto md:px-40">
     <!-- Section: Design Block -->
     <section class="mb-32 text-center">
       <h2 class="mb-12 pb-4 text-center text-3xl font-bold">Testimonials</h2>
@@ -7,7 +7,7 @@
       <div class="grid gap-6 md:grid-cols-3 xl:gap-x-12">
         <div class="mb-6 lg:mb-0">
           <div
-            class="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-blue-300"
+            class="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-blue-200"
           >
             <div class="flex">
               <div
@@ -49,8 +49,7 @@
               <p class="text-base">
                 "I cannot say enough good things about this hotel. From the moment I
                 arrived, I felt welcomed and well taken care of. The rooms are comfortable
-                and well-equipped. The pool and gym are excellent. A wonderful overall
-                experience!"
+                and well-equipped. A wonderful overall experience!"
               </p>
             </div>
           </div>
@@ -58,7 +57,7 @@
 
         <div class="mb-6 lg:mb-0">
           <div
-            class="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-blue-300"
+            class="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-blue-200"
           >
             <div class="flex">
               <div
@@ -99,9 +98,8 @@
               </ul>
               <p class="text-base">
                 "This hotel offers an excellent value for money. The rooms were cozy and
-                clean, and the staff made an effort to ensure my stay was enjoyable. The
-                central location made it easy to explore the city. I would definitely
-                recommend it to other travelers."
+                clean, and the staff made an effort to ensure my stay was enjoyable. I
+                would definitely recommend it to other travelers."
               </p>
             </div>
           </div>
@@ -109,7 +107,7 @@
 
         <div class="mb-0">
           <div
-            class="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-blue-300"
+            class="relative block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-blue-200"
           >
             <div class="flex">
               <div

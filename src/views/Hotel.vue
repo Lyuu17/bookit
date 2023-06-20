@@ -1,43 +1,50 @@
 <template>
-  <div class="container mx-auto px-4 py-8">
-    <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-      <img class="w-full h-64 object-cover" :src="hotel.image" :alt="hotel.name" />
-
-      <div class="px-6 py-4">
-        <h2 class="text-xl font-bold mb-2">{{ hotel.name }}</h2>
-        <p class="text-gray-700 text-base">{{ hotel.description }}</p>
+  <section class="py-5 bg-indigo-200 text-white text-center">
+    <div class="container mx-auto flex items-center">
+      <div class="w-full">
+        <h2 class="text-4xl font-nunito text-black">{{ hotel.name }}</h2>
       </div>
-
-      <div class="px-6 py-4">
-        <h4 class="text-lg font-semibold mb-2">Facilities</h4>
-        <ul class="flex flex-wrap">
-          <li v-for="facility in hotel.facilities" :key="facility" class="mr-2 mb-2">
-            <span
-              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
-              >{{ facility }}</span
-            >
-          </li>
-        </ul>
+    </div>
+  </section>
+  <section class="bg-gray-100 py-5">
+    <div class="container mx-auto grid grid-cols-2 gap-4">
+      <div class="mt-8 flex flex-col items-center border-r-4">
+        <h2 class="text-2xl font-bold">Contact Details</h2>
+        <p class="text-lg">
+          Address: {{ hotel.address.street }}, {{ hotel.address.country }}
+        </p>
+        <p class="text-lg">Postal code: {{ hotel.address.postal_code }}</p>
+        <p class="text-lg">Telephone: {{ hotel.phone }}</p>
       </div>
-
-      <div class="px-6 py-4">
-        <h4 class="text-lg font-semibold mb-2">Amenities</h4>
-        <ul class="flex flex-wrap">
-          <li v-for="amenity in hotel.amenities" :key="amenity" class="mr-2 mb-2">
-            <span
-              class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
-              >{{ amenity }}</span
-            >
+      <div class="mt-8 flex flex-col items-center">
+        <h2 class="text-2xl font-bold">Servicios</h2>
+        <ul>
+          <li v-for="hotelItem in hotel.amenities" class="text-center">
+            {{ hotelItem.name }}
           </li>
         </ul>
       </div>
     </div>
-  </div>
+  </section>
+  <section>
+    <div class="mt-8 text-center">
+      <h2 class="text-2xl font-bold">Check-in</h2>
+      <p class="text-lg">
+        Horario de Check-in: {{ hotel.checkin.begin_time }} - {{ hotel.checkin.end_time }}
+      </p>
+      <p class="text-lg">Minimun age: {{ hotel.checkin.min_age }}</p>
+    </div>
+  </section>
+  <section>
+    <p class="text-lg">
+      Instrucciones para el Check-in: {{ hotel.checkin.instructions }}
+    </p>
+  </section>
   <Testimonies />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import Testimonies from "../components/Testimonies.vue";
 
 export default defineComponent({
