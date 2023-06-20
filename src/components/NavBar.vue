@@ -38,11 +38,12 @@
             >
           </li>
           <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-blue-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >My reservations</a
-            >
+            <input
+              type="button"
+              value="My Bookings"
+              @click="my_bookings"
+              class="block cursor-pointer py-2 pl-3 pr-4 text-blue-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            />
           </li>
         </ul>
       </div>
@@ -50,6 +51,15 @@
   </nav>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const my_bookings = () => {
+  router.push({
+    name: "my-bookings",
+  });
+};
+</script>
 
 <style scoped></style>
