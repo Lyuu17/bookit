@@ -7,9 +7,14 @@
           alt="Booking image"
           class="w-full h-full border-5 object-cover backdrop-filter backdrop-blur-sm brightness-75"
         />
-      </div>
-      <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
-        <h2 class="text-5xl font-normal"></h2>
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center text-white"
+        >
+          <h2 class="text-3xl font-light">
+            You are one step away from experiencing an incredible adventure.
+          </h2>
+          <h2 class="text-3xl font-normal">Are you ready?</h2>
+        </div>
       </div>
     </section>
     <section class="py-5">
