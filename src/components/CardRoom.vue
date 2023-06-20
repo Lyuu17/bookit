@@ -39,7 +39,6 @@
                 <li>Size: {{ config.size }}</li>
                 <div>
                   <p class="text-xl font-bold mt-4 text-gray-900 dark:text-black">
-                    Base price:
                     <span class="text-md font-bold mt-4 text-gray-900 dark:text-black"
                       >{{ config.base_price }} €</span
                     >

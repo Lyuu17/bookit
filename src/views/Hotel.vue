@@ -10,7 +10,6 @@
         <div
           class="absolute inset-0 flex flex-col items-center justify-center text-white"
         >
-          <h3 class="text-xl py-2">Bienvenido/a a</h3>
           <h2 class="text-5xl font-normal">{{ hotel.name }}</h2>
         </div>
       </div>
