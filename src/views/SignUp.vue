@@ -87,6 +87,7 @@
 <script lang="ts" setup>
 import axios from "axios";
 import { ref } from "vue";
+import { useStore } from "pinia";
 import { useRouter } from "vue-router";
 
 const first_name = ref("");
@@ -96,6 +97,7 @@ const email_address = ref("");
 const password = ref("");
 
 const router = useRouter();
+const store = useStore();
 
 const register = async () => {
   try {
@@ -107,6 +109,7 @@ const register = async () => {
       birthdate: new Date(birthdate.value).toISOString().split("T")[0],
     });
     alert("Usuario creado con éxito");
+    store.setResponseData(response.data);
     router.push({ name: "home" });
     console.log(response.data);
   } catch (e: any) {

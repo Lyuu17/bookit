@@ -81,7 +81,7 @@ const login = async () => {
   try {
     const response = await axios.post("/api/v1/auth/login", data);
     console.log(response.data);
-    store.responseData = response.data;
+    store.setResponseData(response.data);
     router.push({ name: "home" });
     alert(`Bienvenid@ de nuevo!`);
   } catch (e: any) {
