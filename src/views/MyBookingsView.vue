@@ -10,10 +10,9 @@
         <div
           class="absolute inset-0 flex flex-col items-center justify-center text-white"
         >
-          <h2 class="text-3xl font-light">
-            You are one step away from experiencing an incredible adventure.
+          <h2 class="text-5xl font-normal">
+            My Bookings
           </h2>
-          <h2 class="text-3xl font-normal">Are you ready?</h2>
         </div>
       </div>
     </section>
