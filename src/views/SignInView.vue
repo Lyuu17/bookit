@@ -63,25 +63,29 @@
 <script lang="ts" setup>
 import axios from "axios";
 import { ref } from "vue";
-import { useStore } from "pinia";
 import { RouterLink, useRouter } from "vue-router";
+
+import { useAuthStore } from "@/stores/AuthStore";
 
 const email_address = ref("");
 const password = ref("");
 
 const router = useRouter();
-const store = useStore();
+
+const authStore = useAuthStore();
+const { setToken } = authStore;
 
 const login = async () => {
-  const data = {
-    email: email_address.value,
-    password: password.value,
-  };
-
   try {
-    const response = await axios.post("/api/v1/auth/login", data);
-    console.log(response.data);
-    store.setResponseData(response.data);
+    const { data } = await axios.post("/api/v1/auth/login", {
+      email: email_address.value,
+      password: password.value,
+    });
+
+    const { access_token } = data;
+
+    setToken(access_token);
+
     router.push({ name: "home" });
     alert(`Bienvenid@ de nuevo!`);
   } catch (e: any) {

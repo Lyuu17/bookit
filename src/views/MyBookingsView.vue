@@ -18,13 +18,43 @@
       </div>
     </section>
     <section class="py-5">
-      <CardBooking />
+      <h1 v-if="itineraries.length == 0" class="text-center text-4xl">No bookings found</h1>
+
+      <CardBooking v-for="itinerary, id in itineraries" :key="id" :itinerary="itinerary" />
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import axios from "axios";
+import { onBeforeMount, ref } from "vue";
+
+import { useAuthStore } from '@/stores/AuthStore';
+
 import CardBooking from "@/components/CardBooking.vue";
+import { storeToRefs } from "pinia";
+
+const itineraries = ref<any[]>([]);
+const authStore = useAuthStore();
+const { token } = storeToRefs(authStore);
+
+onBeforeMount(async () => {
+  try {
+    const { data } = await axios.get(`/api/v1/itineraries`, {
+      headers: { 'Authorization': `Bearer ${token.value}` }
+    });
+
+    data.forEach(async (itineraryData: any) => {
+      const { data } = await axios.get(`/api/v1/properties/${itineraryData.property}`);
+
+      itineraries.value.push({
+        name: data.name,
+        ...itineraryData
+      });
+    });
+  }
+  catch (e: any) { }
+})
 </script>
 
 <style scoped></style>
