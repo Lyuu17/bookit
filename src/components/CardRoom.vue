@@ -44,14 +44,19 @@
       </div>
     </div>
   </div>
-  <div v-if="showModal" class="fixed inset-0 flex items-center justify-center">
-    <div><Modal_Booking class="z-50" /></div>
+  <div v-if="showModal" class="flex justify-center">
+    <ModalBooking :property="room.property" :room="room.id" @cancel="closeModal"/>
   </div>
 </template>
 
 <script setup lang="ts">
+import ModalBooking from "@/components/ModalBooking.vue";
+import { useAuthStore } from "@/stores/AuthStore";
+import { storeToRefs } from "pinia";
 import { ref } from "vue";
-import Modal_Booking from "@/components/Modal_Booking.vue";
+
+const authStore = useAuthStore();
+const { hasToken } = storeToRefs(authStore);
 
 const showModal = ref(false);
 
@@ -74,8 +79,12 @@ const imageUrls = [
 const imageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
 
 const openModal = () => {
+  if (!hasToken) {
+    alert('Unauthorized');
+    return;
+  }
+
   showModal.value = true;
-  console.log("se abre");
 };
 
 const closeModal = () => {

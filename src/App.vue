@@ -3,7 +3,7 @@
     <NavBar/>
   </header>
   <main>
-    <router-view></router-view>
+    <RouterView></RouterView>
   </main>
   <Footer/>
 </template>

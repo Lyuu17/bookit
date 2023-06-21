@@ -79,7 +79,9 @@ onBeforeMount(async () => {
             name = `${name}, ${bedgroupConfig.type}`;
 
         rooms.value.push({
+          id: room.id,
           name: name,
+          property: data.id,
           quantity: bedgroupConfig.quantity,
           type: bedgroupConfig.type,
           price: bedgroupConfig.base_price,
