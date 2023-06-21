@@ -104,8 +104,7 @@ const book = async () => {
     alert('Successful');
   }
   catch (e: any) {
-    alert('Error');
-    console.error(e);
+    alert(e.response.data.message);
   }
 }
 </script>
