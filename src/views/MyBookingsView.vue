@@ -19,7 +19,9 @@
     <section class="py-5">
       <h1 v-if="itineraries.length == 0" class="text-center text-4xl">No bookings found</h1>
 
-      <CardBooking v-for="itinerary, id in itineraries" :key="id" :itinerary="itinerary" />
+      <div class="flex flex-row justify-center flex-wrap">
+        <CardBooking v-for="itinerary, id in itineraries" :key="id" :itinerary="itinerary" />
+      </div>
     </section>
   </div>
 </template>

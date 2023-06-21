@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+  <div class="max-w-md m-2 bg-white shadow-lg rounded-lg overflow-hidden">
     <div class="px-6 py-4">
       <div class="font-bold text-xl mb-2 text-center">{{ itinerary.name }}</div>
       <div class="mb-2">
