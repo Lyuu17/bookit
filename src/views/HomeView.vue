@@ -29,7 +29,7 @@
   </section>
   <section>
     <div class="inline-table p-3" v-for="hotel in hotels" :key="hotel.id">
-      <Card :hotel="hotel" />
+      <Card :hotel="hotel" :checkin="checkin" :checkout="checkout" />
     </div>
   </section>
   <section>

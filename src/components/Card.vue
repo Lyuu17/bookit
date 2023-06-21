@@ -32,14 +32,22 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import HotelStarSvg from "@/components/HotelStarSvg.vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
   hotel: {
     type: Object,
     required: true,
   },
+  checkin: {
+    type: String,
+    required: true,
+  },
+  checkout: {
+    type: String,
+    required: true,
+  }
 });
 
 const router = useRouter();
@@ -48,6 +56,10 @@ const booking = () => {
   router.push({
     name: "hotel",
     params: { id: id },
+    query: {
+      checkin: props.checkin,
+      checkout: props.checkout
+    }
   });
 };
 </script>

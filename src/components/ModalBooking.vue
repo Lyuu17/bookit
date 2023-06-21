@@ -62,6 +62,9 @@ import { useAuthStore } from "@/stores/AuthStore";
 import axios from "axios";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 const emits = defineEmits(['cancel']);
 const props = defineProps({
@@ -75,8 +78,8 @@ const props = defineProps({
   }
 })
 
-const checkin = ref('');
-const checkout = ref('');
+const checkin = ref(route.query.checkin || '');
+const checkout = ref(route.query.checkout || '');
 const adults = ref(0);
 const kids = ref(0);
 const special_request = ref('');

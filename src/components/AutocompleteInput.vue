@@ -5,7 +5,7 @@
       @input="search"
       type="text"
       class="outline-none bottom-0 left-0 z-10 max-h-48 overflow-y-auto bg-white border border-gray-300 rounded-md p-2 autocomplete-input"
-      placeholder="City Name"
+      placeholder="Search a city..."
     />
     <ul
       v-if="suggestionsShowing && suggestions.length"
