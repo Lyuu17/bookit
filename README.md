@@ -1,25 +1,22 @@
 # bookit-client
 
-This template should help get you started developing with Vue 3 in Vite.
+## Screenshots
 
-## Recommended IDE Setup
+### Home
+![image](https://github.com/Lyuu17/bookit-client/assets/14199521/5a6f8b62-d453-40ce-95d8-f8fa3e58807a)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Login
+![image](https://github.com/Lyuu17/bookit-client/assets/14199521/95b71fbf-1cf7-41b3-8b82-58f61cd05284)
 
-## Type Support for `.vue` Imports in TS
+### Hotel selection
+![image](https://github.com/Lyuu17/bookit-client/assets/14199521/8d0602e2-0418-4231-aa87-895feb0a3761)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### Hotel View
+![image](https://github.com/Lyuu17/bookit-client/assets/14199521/335beaf8-4bc4-4dbe-be70-ceda42b5cbf0)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### Bookings
+![image](https://github.com/Lyuu17/bookit-client/assets/14199521/4df2bed9-952f-4745-ac2a-bfdcc0443f54)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
